@@ -9,26 +9,12 @@ services:
         environment:
             POSTGRES_USER: postgres
             POSTGRES_PASSWORD: postgres
-        # volumes:
-        #     - 'postgres_data:/var/lib/postgresql/data'
+            POSTGRES_DB: nestjsapp
         networks:
             - nestjsapp
         healthcheck:
-          # test: ["CMD", "pg_isready", "-q", "-d", "${DB_DATABASE}", "-U", "${DB_USERNAME}"]
           retries: 3
           timeout: 5s
-    # pgadmin:
-    #   image: dpage/pgadmin4
-    #   environment:
-    #     - PGADMIN_DEFAULT_EMAIL=t@t.com
-    #     - PGADMIN_DEFAULT_PASSWORD=test
-    #     - PGADMIN_LISTEN_PORT=5050
-    #   ports:
-    #     - '5050:5050'
-    #   container_name: pgadmin
-    #   networks:
-    #     - rfagro
 networks:
     nestjsapp:
         driver: bridge
-
